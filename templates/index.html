@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat com DialoGPT - Hugging Face</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🤖 Chat com Microsoft DialoGPT</h1>
+            <p>Conversação usando Hugging Face API (sem chave necessária)</p>
+        </header>
+
+        <div class="info-panel">
+            <div class="info-item">
+                <strong>ℹ️ Como funciona:</strong>
+                <ul>
+                    <li>Modelo DialoGPT rodando localmente</li>
+                    <li>Primeira execução baixa o modelo (~1GB)</li>
+                    <li>Após carregado, respostas são instantâneas</li>
+                    <li>Funciona offline após download</li>
+                    <li>Usa GPU se disponível (muito mais rápido)</li>
+                </ul>
+            </div>
+            <div id="status" class="status-indicator">
+                <span id="statusText">Verificando modelo...</span>
+            </div>
+        </div>
+
+        <div class="chat-container" id="chatContainer">
+            <div class="message bot-message">
+                <div class="message-content">
+                    Olá! Sou o DialoGPT da Microsoft. Como posso ajudá-lo hoje?
+                </div>
+                <div class="message-time">Sistema</div>
+            </div>
+        </div>
+
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="loading-spinner"></div>
+            <span>Processando mensagem...</span>
+        </div>
+
+        <div class="input-container">
+            <div class="input-wrapper">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="Digite sua mensagem aqui..."
+                    maxlength="200"
+                    autocomplete="off"
+                >
+                <button id="sendButton" class="send-btn">
+                    <span class="btn-text">Enviar</span>
+                    <span class="btn-icon">📤</span>
+                </button>
+            </div>
+            <div class="input-info">
+                <span id="charCount">0/200</span>
+                <button id="clearButton" class="clear-btn">Limpar Chat</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <small>
+                Powered by <strong>Transformers (Local)</strong> • 
+                Modelo: <strong>microsoft/DialoGPT-medium</strong> •
+                <span id="deviceInfo">Dispositivo: Carregando...</span>
+            </small>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
